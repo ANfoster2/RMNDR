@@ -509,6 +509,9 @@ background-color: rgb(255, 255, 255);
                   <property name="text">
                    <string>Notes</string>
                   </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
                  </widget>
                 </item>
                 <item>
@@ -663,33 +666,10 @@ background-color: rgb(255, 255, 255);
                    </column>
                   </widget>
                  </item>
-                 <item>
-                  <widget class="QScrollBar" name="horizontalScrollBar">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
                 </layout>
                </widget>
                <widget class="QWidget" name="page_2">
-                <layout class="QVBoxLayout" name="verticalLayout_7">
-                 <item>
-                  <widget class="QLabel" name="label">
-                   <property name="font">
-                    <font>
-                     <pointsize>40</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Page 2</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                <layout class="QVBoxLayout" name="verticalLayout_7"/>
                </widget>
               </widget>
              </item>
