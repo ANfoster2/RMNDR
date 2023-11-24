@@ -11,9 +11,16 @@
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-
+from task_event_window import Ui_SecondWindow
 
 class Ui_MainWindow(object):
+    def openWindow(self):
+        super(Ui_MainWindow, self).__init__()
+        self.ui = Ui_SecondWindow()
+        self.ui.setupUi(self.Ui_SecondWindow)
+        self.Ui_SecondWindow.show()
+
+
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -86,7 +93,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setSpacing(0)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.btn_add_new = QPushButton(self.frame_2)
+        self.btn_add_new = QPushButton(self.frame_2, clicked = lambda: self.openWindow())
         self.btn_add_new.setObjectName(u"btn_add_new")
         sizePolicy.setHeightForWidth(self.btn_add_new.sizePolicy().hasHeightForWidth())
         self.btn_add_new.setSizePolicy(sizePolicy)

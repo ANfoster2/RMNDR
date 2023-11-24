@@ -9,15 +9,10 @@ from PySide2.QtWidgets import *
 
 # GUI FILE
 from ui_mainwindow import Ui_MainWindow
-from task_event_window import Ui_frm_task_event
+
 
 # IMPORT FUNCTIONS
 from ui_functions import *
-class Window2(QMainWindow):
-    def __init__(self):
-        QMainWindow.__init__(self)
-        self.ui = Ui_frm_task_event
-        self.ui.setupUi(self)
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -35,13 +30,9 @@ class MainWindow(QMainWindow):
         # PAGE 2
         self.ui.btn_menu_2.clicked.connect(lambda: self.ui.pages_widget.setCurrentWidget(self.ui.page_2))
 
-        self.btn_add_new.clicked.connect(self.Window2)
-
         ## SHOW ==> MAIN WINDOW
         self.show()
         ## ==> END ##
-       
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
