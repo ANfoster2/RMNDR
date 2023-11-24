@@ -33,11 +33,11 @@ class MainWindow(QMainWindow):
         self.ui.btn_menu_2.clicked.connect(lambda: self.ui.pages_widget.setCurrentWidget(self.ui.page_2))
 
 
-
         ## SHOW ==> MAIN WINDOW
         ########################################################################
         self.show()
         ## ==> END ##
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

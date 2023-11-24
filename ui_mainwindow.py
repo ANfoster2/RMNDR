@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainwindowDcGLRK.ui'
+## Form generated from reading UI file 'ui_mainwindowAUUbyu.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -225,6 +225,7 @@ class Ui_MainWindow(object):
 "QPushButton:checked{\n"
 "background-color: rgb(255, 255, 255);\n"
 "}")
+        self.btn_menu_2.setCheckable(True)
 
         self.verticalLayout_4.addWidget(self.btn_menu_2)
 
@@ -308,26 +309,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.tableWidget)
 
-        self.horizontalScrollBar = QScrollBar(self.page_1)
-        self.horizontalScrollBar.setObjectName(u"horizontalScrollBar")
-        self.horizontalScrollBar.setOrientation(Qt.Horizontal)
-
-        self.verticalLayout_6.addWidget(self.horizontalScrollBar)
-
         self.pages_widget.addWidget(self.page_1)
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
         self.verticalLayout_7 = QVBoxLayout(self.page_2)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.label = QLabel(self.page_2)
-        self.label.setObjectName(u"label")
-        font = QFont()
-        font.setPointSize(40)
-        self.label.setFont(font)
-        self.label.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_7.addWidget(self.label)
-
         self.pages_widget.addWidget(self.page_2)
 
         self.verticalLayout_5.addWidget(self.pages_widget)
@@ -373,6 +359,5 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Friday", None));
         ___qtablewidgetitem6 = self.tableWidget.horizontalHeaderItem(6)
         ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Saturday", None));
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Page 2", None))
     # retranslateUi
 
