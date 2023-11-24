@@ -43,6 +43,7 @@ class Ui_dialog_addnew(object):
         self.cb_estimated_time.addItem("")
         self.cb_estimated_time.addItem("")
         self.btn_cancel = QtWidgets.QPushButton(dialog_addnew)
+        self.btn_cancel.clicked.connect(lambda: dialog_addnew.close())
         self.btn_cancel.setGeometry(QtCore.QRect(50, 330, 101, 41))
         self.btn_cancel.setObjectName("btn_cancel")
         self.btn_Create_task = QtWidgets.QPushButton(dialog_addnew)

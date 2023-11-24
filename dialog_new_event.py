@@ -39,6 +39,7 @@ class Ui_dialog_new_event(object):
         self.label_3.setStyleSheet("font: 10pt \"Microsoft YaHei UI\";")
         self.label_3.setObjectName("label_3")
         self.btn_cancel = QtWidgets.QPushButton(dialog_new_event)
+        self.btn_cancel.clicked.connect(lambda: dialog_new_event.close())
         self.btn_cancel.setGeometry(QtCore.QRect(40, 340, 121, 41))
         self.btn_cancel.setStyleSheet("QPushButton{\n"
 "    font: 10pt \"Microsoft YaHei UI\";\n"
