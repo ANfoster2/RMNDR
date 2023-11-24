@@ -1,10 +1,4 @@
-################################################################################
-##
-## BY: WANDERSON M.PIMENTA
-## PROJECT MADE WITH: Qt Designer and PySide2
-## V: 1.0.0
-##
-################################################################################
+
 
 import sys
 import platform
@@ -25,7 +19,7 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        ## TOGGLE/BURGUER MENU
+        ## TOGGLE/BURGER MENU
         ########################################################################
         self.ui.btn_toggle.clicked.connect(lambda: UIFunctions.toggleMenu(self, 250, True))
 

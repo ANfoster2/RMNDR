@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainwindowfKRrzU.ui'
+## Form generated from reading UI file 'ui_mainwindowDcGLRK.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -66,8 +66,90 @@ class Ui_MainWindow(object):
         self.frame_top = QFrame(self.Top_Bar)
         self.frame_top.setObjectName(u"frame_top")
         self.frame_top.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-        self.frame_top.setFrameShape(QFrame.StyledPanel)
+        self.frame_top.setFrameShape(QFrame.NoFrame)
         self.frame_top.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.frame_top)
+        self.horizontalLayout_5.setSpacing(0)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.horizontalSpacer = QSpacerItem(60, 20, QSizePolicy.Maximum, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer)
+
+        self.frame_2 = QFrame(self.frame_top)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setMinimumSize(QSize(80, 0))
+        self.frame_2.setMaximumSize(QSize(100, 16777215))
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_4 = QHBoxLayout(self.frame_2)
+        self.horizontalLayout_4.setSpacing(0)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.btn_add_new = QPushButton(self.frame_2)
+        self.btn_add_new.setObjectName(u"btn_add_new")
+        sizePolicy.setHeightForWidth(self.btn_add_new.sizePolicy().hasHeightForWidth())
+        self.btn_add_new.setSizePolicy(sizePolicy)
+        self.btn_add_new.setStyleSheet(u"QPushButton{\n"
+"	\n"
+"	color: rgb(25, 25, 25);\n"
+"	background-color: rgb(243, 225, 255);\n"
+"	border: 0px solid\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(228, 196, 255)\n"
+"}\n"
+"QPushButton:checked{\n"
+"background-color: rgb(255, 255, 255);\n"
+"}")
+
+        self.horizontalLayout_4.addWidget(self.btn_add_new)
+
+
+        self.horizontalLayout_5.addWidget(self.frame_2)
+
+        self.horizontalSpacer_2 = QSpacerItem(70, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
+
+        self.frame_3 = QFrame(self.frame_top)
+        self.frame_3.setObjectName(u"frame_3")
+        sizePolicy.setHeightForWidth(self.frame_3.sizePolicy().hasHeightForWidth())
+        self.frame_3.setSizePolicy(sizePolicy)
+        self.frame_3.setMinimumSize(QSize(80, 0))
+        self.frame_3.setMaximumSize(QSize(100, 16777215))
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_8 = QVBoxLayout(self.frame_3)
+        self.verticalLayout_8.setSpacing(0)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.btn_today = QPushButton(self.frame_3)
+        self.btn_today.setObjectName(u"btn_today")
+        sizePolicy.setHeightForWidth(self.btn_today.sizePolicy().hasHeightForWidth())
+        self.btn_today.setSizePolicy(sizePolicy)
+        self.btn_today.setStyleSheet(u"QPushButton{\n"
+"	\n"
+"	color: rgb(25, 25, 25);\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	border: 0px solid\n"
+"}\n"
+"QPushButton:hover{\n"
+"	background-color: rgb(216, 211, 215);\n"
+"}\n"
+"QPushButton:checked{\n"
+"background-color: rgb(216, 211, 215);\n"
+"}")
+
+        self.verticalLayout_8.addWidget(self.btn_today)
+
+
+        self.horizontalLayout_5.addWidget(self.frame_3)
+
+        self.horizontalSpacer_3 = QSpacerItem(591, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_3)
+
 
         self.horizontalLayout.addWidget(self.frame_top)
 
@@ -140,7 +222,7 @@ class Ui_MainWindow(object):
 "QPushButton:hover{\n"
 "background-color: rgb(255, 255, 255);\n"
 "}\n"
-"QPushButton:pressed{\n"
+"QPushButton:checked{\n"
 "background-color: rgb(255, 255, 255);\n"
 "}")
 
@@ -162,7 +244,7 @@ class Ui_MainWindow(object):
 "QPushButton:hover{\n"
 "background-color: rgb(255, 255, 255);\n"
 "}\n"
-"QPushButton:pressed{\n"
+"QPushButton:checked{\n"
 "background-color: rgb(255, 255, 255);\n"
 "}")
 
@@ -184,16 +266,53 @@ class Ui_MainWindow(object):
         self.pages_widget.setObjectName(u"pages_widget")
         self.page_1 = QWidget()
         self.page_1.setObjectName(u"page_1")
+        sizePolicy.setHeightForWidth(self.page_1.sizePolicy().hasHeightForWidth())
+        self.page_1.setSizePolicy(sizePolicy)
         self.verticalLayout_6 = QVBoxLayout(self.page_1)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.label_2 = QLabel(self.page_1)
-        self.label_2.setObjectName(u"label_2")
-        font = QFont()
-        font.setPointSize(40)
-        self.label_2.setFont(font)
-        self.label_2.setAlignment(Qt.AlignCenter)
+        self.tableWidget = QTableWidget(self.page_1)
+        if (self.tableWidget.columnCount() < 7):
+            self.tableWidget.setColumnCount(7)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        __qtablewidgetitem4.setBackground(QColor(251, 233, 255));
+        self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(6, __qtablewidgetitem6)
+        if (self.tableWidget.rowCount() < 7):
+            self.tableWidget.setRowCount(7)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(0, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(1, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(2, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(3, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(4, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(5, __qtablewidgetitem12)
+        __qtablewidgetitem13 = QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(6, __qtablewidgetitem13)
+        self.tableWidget.setObjectName(u"tableWidget")
 
-        self.verticalLayout_6.addWidget(self.label_2)
+        self.verticalLayout_6.addWidget(self.tableWidget)
+
+        self.horizontalScrollBar = QScrollBar(self.page_1)
+        self.horizontalScrollBar.setObjectName(u"horizontalScrollBar")
+        self.horizontalScrollBar.setOrientation(Qt.Horizontal)
+
+        self.verticalLayout_6.addWidget(self.horizontalScrollBar)
 
         self.pages_widget.addWidget(self.page_1)
         self.page_2 = QWidget()
@@ -202,6 +321,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.label = QLabel(self.page_2)
         self.label.setObjectName(u"label")
+        font = QFont()
+        font.setPointSize(40)
         self.label.setFont(font)
         self.label.setAlignment(Qt.AlignCenter)
 
@@ -233,10 +354,25 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.btn_toggle.setText(QCoreApplication.translate("MainWindow", u"MENU", None))
+        self.btn_add_new.setText(QCoreApplication.translate("MainWindow", u"Add New+", None))
+        self.btn_today.setText(QCoreApplication.translate("MainWindow", u"Today", None))
         self.btn_menu_1.setText(QCoreApplication.translate("MainWindow", u"Schedule", None))
         self.btn_menu_2.setText(QCoreApplication.translate("MainWindow", u"Notes", None))
         self.btn_menu_3.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Page 1", None))
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Sunday", None));
+        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Monday", None));
+        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Tuesday", None));
+        ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Wednesday", None));
+        ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Thursday", None));
+        ___qtablewidgetitem5 = self.tableWidget.horizontalHeaderItem(5)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Friday", None));
+        ___qtablewidgetitem6 = self.tableWidget.horizontalHeaderItem(6)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Saturday", None));
         self.label.setText(QCoreApplication.translate("MainWindow", u"Page 2", None))
     # retranslateUi
 

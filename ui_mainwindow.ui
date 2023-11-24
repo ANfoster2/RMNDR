@@ -133,11 +133,211 @@ border: 0px solid;</string>
           <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Maximum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>60</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_2">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="btn_add_new">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	
+	color: rgb(25, 25, 25);
+	background-color: rgb(243, 225, 255);
+	border: 0px solid
+}
+QPushButton:hover{
+background-color: rgb(228, 196, 255)
+}
+QPushButton:checked{
+background-color: rgb(255, 255, 255);
+}</string>
+               </property>
+               <property name="text">
+                <string>Add New+</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Preferred</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>70</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="btn_today">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	
+	color: rgb(25, 25, 25);
+	background-color: rgb(255, 255, 255);
+	border: 0px solid
+}
+QPushButton:hover{
+	background-color: rgb(216, 211, 215);
+}
+QPushButton:checked{
+background-color: rgb(216, 211, 215);
+}</string>
+               </property>
+               <property name="text">
+                <string>Today</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>591</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -272,12 +472,15 @@ border: 0px solid;</string>
 QPushButton:hover{
 background-color: rgb(255, 255, 255);
 }
-QPushButton:pressed{
+QPushButton:checked{
 background-color: rgb(255, 255, 255);
 }</string>
                   </property>
                   <property name="text">
                    <string>Schedule</string>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -299,7 +502,7 @@ background-color: rgb(255, 255, 255);
 QPushButton:hover{
 background-color: rgb(255, 255, 255);
 }
-QPushButton:pressed{
+QPushButton:checked{
 background-color: rgb(255, 255, 255);
 }</string>
                   </property>
@@ -342,7 +545,7 @@ background-color: rgb(255, 255, 255);
 QPushButton:hover{
 background-color: rgb(255, 255, 255);
 }
-QPushButton:pressed{
+QPushButton:checked{
 background-color: rgb(255, 255, 255);
 }</string>
                   </property>
@@ -372,19 +575,98 @@ background-color: rgb(255, 255, 255);
                 <number>0</number>
                </property>
                <widget class="QWidget" name="page_1">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <layout class="QVBoxLayout" name="verticalLayout_6">
                  <item>
-                  <widget class="QLabel" name="label_2">
-                   <property name="font">
-                    <font>
-                     <pointsize>40</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Page 1</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                  <widget class="QTableWidget" name="tableWidget">
+                   <row>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </row>
+                   <column>
+                    <property name="text">
+                     <string>Sunday</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Monday</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Tuesday</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Wednesday</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Thursday</string>
+                    </property>
+                    <property name="background">
+                     <color>
+                      <red>251</red>
+                      <green>233</green>
+                      <blue>255</blue>
+                     </color>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Friday</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Saturday</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QScrollBar" name="horizontalScrollBar">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
                    </property>
                   </widget>
                  </item>
