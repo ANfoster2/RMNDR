@@ -8,6 +8,7 @@ from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFont
 from PyQt5.QtWidgets import *
 
 # GUI FILE
+from login import
 from ui_mainwindow import Ui_MainWindow
 
 
@@ -33,6 +34,8 @@ class MainWindow(QMainWindow):
         ## SHOW ==> MAIN WINDOW
         self.show()
         ## ==> END ##
+    
+    
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

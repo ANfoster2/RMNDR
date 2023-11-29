@@ -14,33 +14,33 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_dialog_new_event(object):
     def setupUi(self, dialog_new_event):
         dialog_new_event.setObjectName("dialog_new_event")
-        dialog_new_event.resize(337, 397)
+        dialog_new_event.resize(337, 472)
         self.label = QtWidgets.QLabel(dialog_new_event)
-        self.label.setGeometry(QtCore.QRect(40, 15, 101, 21))
+        self.label.setGeometry(QtCore.QRect(40, 70, 101, 21))
         self.label.setStyleSheet("font: 10pt \"Microsoft YaHei\";")
         self.label.setObjectName("label")
         self.txt_event_name = QtWidgets.QLineEdit(dialog_new_event)
-        self.txt_event_name.setGeometry(QtCore.QRect(40, 50, 261, 31))
+        self.txt_event_name.setGeometry(QtCore.QRect(40, 110, 261, 31))
         self.txt_event_name.setText("")
         self.txt_event_name.setObjectName("txt_event_name")
         self.label_2 = QtWidgets.QLabel(dialog_new_event)
-        self.label_2.setGeometry(QtCore.QRect(40, 90, 151, 16))
+        self.label_2.setGeometry(QtCore.QRect(40, 150, 151, 16))
         self.label_2.setStyleSheet("font: 10pt \"Microsoft YaHei UI\";")
         self.label_2.setObjectName("label_2")
         self.txt_event_description = QtWidgets.QTextEdit(dialog_new_event)
-        self.txt_event_description.setGeometry(QtCore.QRect(40, 120, 261, 131))
+        self.txt_event_description.setGeometry(QtCore.QRect(40, 190, 261, 131))
         self.txt_event_description.setObjectName("txt_event_description")
         self.txt_location = QtWidgets.QLineEdit(dialog_new_event)
-        self.txt_location.setGeometry(QtCore.QRect(40, 300, 261, 31))
+        self.txt_location.setGeometry(QtCore.QRect(40, 360, 261, 31))
         self.txt_location.setText("")
         self.txt_location.setObjectName("txt_location")
         self.label_3 = QtWidgets.QLabel(dialog_new_event)
-        self.label_3.setGeometry(QtCore.QRect(40, 270, 91, 16))
+        self.label_3.setGeometry(QtCore.QRect(40, 330, 91, 16))
         self.label_3.setStyleSheet("font: 10pt \"Microsoft YaHei UI\";")
         self.label_3.setObjectName("label_3")
         self.btn_cancel = QtWidgets.QPushButton(dialog_new_event)
         self.btn_cancel.clicked.connect(lambda: dialog_new_event.close())
-        self.btn_cancel.setGeometry(QtCore.QRect(40, 340, 121, 41))
+        self.btn_cancel.setGeometry(QtCore.QRect(30, 410, 121, 41))
         self.btn_cancel.setStyleSheet("QPushButton{\n"
 "    font: 10pt \"Microsoft YaHei UI\";\n"
 "    color: rgb(25, 25, 25);\n"
@@ -53,7 +53,7 @@ class Ui_dialog_new_event(object):
 "")
         self.btn_cancel.setObjectName("btn_cancel")
         self.btn_Create_event = QtWidgets.QPushButton(dialog_new_event)
-        self.btn_Create_event.setGeometry(QtCore.QRect(180, 340, 121, 41))
+        self.btn_Create_event.setGeometry(QtCore.QRect(180, 410, 121, 41))
         self.btn_Create_event.setStyleSheet("QPushButton{\n"
 "    font: 10pt \"Microsoft YaHei UI\";\n"
 "    color: rgb(25, 25, 25);\n"
@@ -65,9 +65,19 @@ class Ui_dialog_new_event(object):
 "}\n"
 "")
         self.btn_Create_event.setObjectName("btn_Create_event")
+        self.dateEdit_event = QtWidgets.QDateEdit(dialog_new_event)
+        self.dateEdit_event.dateChanged.connect(self.dateEditDateChanged)
+        self.dateEdit_event.setGeometry(QtCore.QRect(100, 30, 121, 31))
+        self.dateEdit_event.setStyleSheet("font: 10pt \"Microsoft YaHei UI\";")
+        self.dateEdit_event.setAlignment(QtCore.Qt.AlignCenter)
+        self.dateEdit_event.setObjectName("dateEdit_event")
 
         self.retranslateUi(dialog_new_event)
         QtCore.QMetaObject.connectSlotsByName(dialog_new_event)
+
+    def dateEditDateChanged(self):
+        print("The calendar date was changed")
+        dateSelected = self.dateEdit_event.date().toPyDate()
 
     def retranslateUi(self, dialog_new_event):
         _translate = QtCore.QCoreApplication.translate

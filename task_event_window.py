@@ -16,7 +16,7 @@ from dialog_new_event import Ui_dialog_new_event
 class Ui_SecondWindow(object):
     def openWindow3(self):
         self.window = QtWidgets.QDialog()
-        self.ui = Ui_dialog_new_event()
+        self.ui = Ui_dialog_addnew()
         self.ui.setupUi(self.window)
         self.window.show()
     def openWindow4(self):
