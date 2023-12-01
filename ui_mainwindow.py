@@ -9,9 +9,30 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
+# IMPORT FUNCTIONS
+from ui_functions import *
+#from function_loadData import *
+from task_event_window import Ui_SecondWindow
+from calendar import Ui_frm_calender
+from dialog_addnew import *
+import sqlite3
 
 
 class Ui_MainWindow(object):
+    #Open Second Window(choose task or event)
+    def openWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_SecondWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+    #Open calendar widget
+    def openWindow2(self):
+        self.window = QtWidgets.QWidget()
+        self.ui = Ui_frm_calender()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1025, 552)
@@ -45,6 +66,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
+        #Toggle main pane
         self.btn_toggle = QtWidgets.QPushButton(self.frame_toggle)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -77,7 +99,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_4.setSpacing(0)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.btn_add_new = QtWidgets.QPushButton(self.frame_2)
+        #Add new button. When clicked second window opens.
+        self.btn_add_new = QtWidgets.QPushButton(self.frame_2, clicked = lambda:self.openWindow())
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -115,7 +138,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_8.setSpacing(0)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.btn_today = QtWidgets.QPushButton(self.frame_3)
+        #Today button. Shows a calender. Shows today's date.
+        self.btn_today = QtWidgets.QPushButton(self.frame_3, clicked = lambda:self.openWindow2())
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -175,6 +199,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
+        #Schedule button
         self.btn_menu_1 = QtWidgets.QPushButton(self.frame_top_menus)
         self.btn_menu_1.setMinimumSize(QtCore.QSize(0, 40))
         self.btn_menu_1.setStyleSheet("QPushButton{\n"
@@ -192,6 +217,7 @@ class Ui_MainWindow(object):
         self.btn_menu_1.setCheckable(True)
         self.btn_menu_1.setObjectName("btn_menu_1")
         self.verticalLayout_4.addWidget(self.btn_menu_1)
+        #Notes button
         self.btn_menu_2 = QtWidgets.QPushButton(self.frame_top_menus)
         self.btn_menu_2.setMinimumSize(QtCore.QSize(0, 40))
         self.btn_menu_2.setStyleSheet("QPushButton{\n"
@@ -211,6 +237,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.btn_menu_2)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_4.addItem(spacerItem3)
+        #Logout button
         self.btn_menu_3 = QtWidgets.QPushButton(self.frame_top_menus)
         self.btn_menu_3.setMinimumSize(QtCore.QSize(0, 40))
         self.btn_menu_3.setStyleSheet("QPushButton{\n"
@@ -226,6 +253,7 @@ class Ui_MainWindow(object):
 "background-color: rgb(255, 255, 255);\n"
 "}")
         self.btn_menu_3.setObjectName("btn_menu_3")
+        self.btn_menu_3.clicked.connect(lambda: MainWindow.close()) #close window
         self.verticalLayout_4.addWidget(self.btn_menu_3)
         self.verticalLayout_3.addWidget(self.frame_top_menus)
         self.horizontalLayout_3.addWidget(self.frame_left_menu)
@@ -254,62 +282,84 @@ class Ui_MainWindow(object):
         self.frame_7.setObjectName("frame_7")
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.frame_7)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+
+        #Sunday table
         self.tbl_sunday = QtWidgets.QTableWidget(self.frame_7)
         self.tbl_sunday.setObjectName("tbl_sunday")
         self.tbl_sunday.setColumnCount(1)
-        self.tbl_sunday.setRowCount(0)
+        self.tbl_sunday.setRowCount(7)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
         self.tbl_sunday.setHorizontalHeaderItem(0, item)
+        self.loadSunday()
         self.horizontalLayout_7.addWidget(self.tbl_sunday)
+
+        #Monday table
         self.tbl_monday = QtWidgets.QTableWidget(self.frame_7)
         self.tbl_monday.setObjectName("tbl_monday")
         self.tbl_monday.setColumnCount(1)
-        self.tbl_monday.setRowCount(0)
+        self.tbl_monday.setRowCount(7)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
         self.tbl_monday.setHorizontalHeaderItem(0, item)
+        self.loadMonday()
         self.horizontalLayout_7.addWidget(self.tbl_monday)
+
+        #Tuesday table
         self.tbl_tuesday = QtWidgets.QTableWidget(self.frame_7)
         self.tbl_tuesday.setObjectName("tbl_tuesday")
         self.tbl_tuesday.setColumnCount(1)
-        self.tbl_tuesday.setRowCount(0)
+        self.tbl_tuesday.setRowCount(7)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
         self.tbl_tuesday.setHorizontalHeaderItem(0, item)
+        self.loadTuesday()
         self.horizontalLayout_7.addWidget(self.tbl_tuesday)
+
+        #Wednesday table
         self.tbl_wednesday = QtWidgets.QTableWidget(self.frame_7)
         self.tbl_wednesday.setObjectName("tbl_wednesday")
         self.tbl_wednesday.setColumnCount(1)
-        self.tbl_wednesday.setRowCount(0)
+        self.tbl_wednesday.setRowCount(7)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
         self.tbl_wednesday.setHorizontalHeaderItem(0, item)
+        self.loadWednesday()
         self.horizontalLayout_7.addWidget(self.tbl_wednesday)
+
+        #Thursday table
         self.tbl_thursday = QtWidgets.QTableWidget(self.frame_7)
         self.tbl_thursday.setObjectName("tbl_thursday")
         self.tbl_thursday.setColumnCount(1)
-        self.tbl_thursday.setRowCount(0)
+        self.tbl_thursday.setRowCount(7)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
         self.tbl_thursday.setHorizontalHeaderItem(0, item)
+        self.loadThursday()
         self.horizontalLayout_7.addWidget(self.tbl_thursday)
+
+        #Friday Table
         self.tbl_friday = QtWidgets.QTableWidget(self.frame_7)
         self.tbl_friday.setObjectName("tbl_friday")
         self.tbl_friday.setColumnCount(1)
-        self.tbl_friday.setRowCount(0)
+        self.tbl_friday.setRowCount(7)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
         self.tbl_friday.setHorizontalHeaderItem(0, item)
+        self.loadFriday()
         self.horizontalLayout_7.addWidget(self.tbl_friday)
+
+        #Saturday table
         self.tbl_saturday = QtWidgets.QTableWidget(self.frame_7)
         self.tbl_saturday.setObjectName("tbl_saturday")
         self.tbl_saturday.setColumnCount(1)
-        self.tbl_saturday.setRowCount(0)
+        self.tbl_saturday.setRowCount(7)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
         self.tbl_saturday.setHorizontalHeaderItem(0, item)
+        self.loadSaturday()
         self.horizontalLayout_7.addWidget(self.tbl_saturday)
+
         self.verticalLayout_6.addWidget(self.frame_7)
         self.pages_widget.addWidget(self.page_1)
         self.page_2 = QtWidgets.QWidget()
@@ -350,6 +400,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
+        #notes table
         self.tbl_notes_display = QtWidgets.QTableWidget(self.frame_5)
         self.tbl_notes_display.setObjectName("tbl_notes_display")
         self.tbl_notes_display.setColumnCount(0)
@@ -365,6 +416,7 @@ class Ui_MainWindow(object):
         self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_6.setObjectName("frame_6")
+        #new note button
         self.btn_new_note = QtWidgets.QPushButton(self.frame_6)
         self.btn_new_note.setGeometry(QtCore.QRect(650, 20, 98, 38))
         self.btn_new_note.setStyleSheet("QPushButton{\n"
@@ -380,6 +432,7 @@ class Ui_MainWindow(object):
 "background-color: rgb(255, 255, 255);\n"
 "}")
         self.btn_new_note.setObjectName("btn_new_note")
+        #Text area for notes
         self.txt_notes = QtWidgets.QTextEdit(self.frame_6)
         self.txt_notes.setGeometry(QtCore.QRect(0, 0, 771, 511))
         self.txt_notes.setObjectName("txt_notes")
@@ -395,9 +448,84 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.pages_widget.setCurrentIndex(1)
+        self.pages_widget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        ## TOGGLE/BURGER MENU
+        self.btn_toggle.clicked.connect(lambda: UIFunctions.toggleMenu(self, 250, True))
+
+        ## PAGES
+
+        # PAGE 1
+        self.btn_menu_1.clicked.connect(lambda: self.pages_widget.setCurrentWidget(self.page_1))
+        # PAGE 2
+        self.btn_menu_2.clicked.connect(lambda: self.pages_widget.setCurrentWidget(self.page_2))
+
+    def loadSunday(self):
+        connection = sqlite3.connect("tasks.db")
+        cur = connection.cursor()
+        sqlquery = "Select Task_Name FROM task_info WHERE Weekday = 'Sunday';"
+
+        self.tbl_sunday.setRowCount(7)
+        tablerow = 0
+        for row in cur.execute(sqlquery):
+                self.tbl_sunday.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                tablerow +=1
+    def loadMonday(self):
+        connection = sqlite3.connect("tasks.db")
+        cur = connection.cursor()
+        sqlquery = "Select Task_Name FROM task_info WHERE Weekday = 'Monday';"
+        self.tbl_monday.setRowCount(7)
+        tablerow = 0
+        for row in cur.execute(sqlquery):
+                self.tbl_monday.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                tablerow +=1
+    def loadTuesday(self):
+        connection = sqlite3.connect("tasks.db")
+        cur = connection.cursor()
+        sqlquery = "Select Task_Name FROM task_info WHERE Weekday = 'Tuesday';"
+        self.tbl_tuesday.setRowCount(7)
+        tablerow = 0
+        for row in cur.execute(sqlquery):
+                self.tbl_tuesday.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                tablerow +=1
+    def loadWednesday(self):
+        connection = sqlite3.connect("tasks.db")
+        cur = connection.cursor()
+        sqlquery = "Select Task_Name FROM task_info WHERE Weekday = 'Wednesday';"
+        self.tbl_wednesday.setRowCount(7)
+        tablerow = 0
+        for row in cur.execute(sqlquery):
+                self.tbl_wednesday.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                tablerow +=1
+    def loadThursday(self):
+        connection = sqlite3.connect("tasks.db")
+        cur = connection.cursor()
+        sqlquery = "Select Task_Name FROM task_info WHERE Weekday = 'Thursday';"
+        self.tbl_thursday.setRowCount(7)
+        tablerow = 0
+        for row in cur.execute(sqlquery):
+                self.tbl_thursday.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                tablerow +=1
+    def loadFriday(self):
+        connection = sqlite3.connect("tasks.db")
+        cur = connection.cursor()
+        sqlquery = "Select Task_Name FROM task_info WHERE Weekday = 'Friday';"
+        self.tbl_friday.setRowCount(7)
+        tablerow = 0
+        for row in cur.execute(sqlquery):
+                self.tbl_friday.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                tablerow +=1
+    def loadSaturday(self):
+        connection = sqlite3.connect("tasks.db")
+        cur = connection.cursor()
+        sqlquery = "Select Task_Name FROM task_info WHERE Weekday = 'Saturday';"
+        self.tbl_saturday.setRowCount(7)
+        tablerow = 0
+        for row in cur.execute(sqlquery):
+                self.tbl_saturday.setItem(tablerow, 0, QtWidgets.QTableWidgetItem(row[0]))
+                tablerow +=1
+                
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))

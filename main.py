@@ -8,7 +8,6 @@ from PyQt5.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFont
 from PyQt5.QtWidgets import *
 
 # GUI FILE
-from login import
 from ui_mainwindow import Ui_MainWindow
 
 

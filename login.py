@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from signup import Ui_signup_page
+from ui_mainwindow import Ui_MainWindow
+import sqlite3
 
 
 class Ui_login_page(object):
@@ -45,6 +47,7 @@ class Ui_login_page(object):
         self.txt_login_password.setFont(font)
         self.txt_login_password.setStyleSheet("background-color: rgba(0, 0, 0, 0);")
         self.txt_login_password.setObjectName("txt_login_password")
+        self.txt_login_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.label_3 = QtWidgets.QLabel(login_page)
         self.label_3.setGeometry(QtCore.QRect(90, 160, 81, 16))
         font = QtGui.QFont()
@@ -81,9 +84,17 @@ class Ui_login_page(object):
         self.btn_signup.setFont(font)
         self.btn_signup.setStyleSheet("border: 0px")
         self.btn_signup.setObjectName("btn_signup")
+        self.btn_signup.clicked.connect(lambda: login_page.close())
         self.horizontalLayout.addWidget(self.btn_signup)
+        self.lbl_error = QtWidgets.QLabel(login_page)
+        self.lbl_error.setGeometry(QtCore.QRect(90, 390, 271, 21))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        self.lbl_error.setFont(font)
+        self.lbl_error.setStyleSheet("color: rgb(255, 0, 0);")
+        self.lbl_error.setObjectName("lbl_error")
         self.btn_login = QtWidgets.QPushButton(login_page)
-        self.btn_login.setGeometry(QtCore.QRect(90, 410, 271, 41))
+        self.btn_login.setGeometry(QtCore.QRect(90, 430, 271, 41))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.btn_login.setFont(font)
@@ -101,6 +112,8 @@ class Ui_login_page(object):
 "background-color: rgb(216, 211, 215);\n"
 "}")
         self.btn_login.setObjectName("btn_login")
+        self.btn_login.clicked.connect(self.loginFunction)
+        self.btn_login.clicked.connect(lambda: login_page.close())
 
         self.retranslateUi(login_page)
         QtCore.QMetaObject.connectSlotsByName(login_page)
@@ -121,6 +134,31 @@ class Ui_login_page(object):
         self.ui = Ui_signup_page()
         self.ui.setupUi(self.window)
         self.window.show()
+    def clickHandler1(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def loginFunction(self):
+        user = self.txt_login_username.text()
+        password = self.txt_login_password.text()
+
+        if len(user)== 0 or len(password)== 0:
+            self.lbl_error.setText("Please input all fields.")
+
+        else:
+            conn = sqlite3.connect("Users.db")
+            cur = conn.cursor()
+            query = 'SELECT password FROM login_info WHERE username =\''+user+"\'"
+            cur.execute(query)
+            result_pass = cur.fetchone()[0]
+            if result_pass == password:
+                print ("Successfully logged in.")
+                self.clickHandler1()
+                
+            else: 
+                self.lbl_error.setText("Invalid username or password")
 
 
 if __name__ == "__main__":

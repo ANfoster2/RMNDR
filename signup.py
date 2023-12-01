@@ -9,6 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from ui_mainwindow import Ui_MainWindow
+import sqlite3
 
 
 class Ui_signup_page(object):
@@ -44,6 +46,7 @@ class Ui_signup_page(object):
         self.txt_signup_password.setFont(font)
         self.txt_signup_password.setStyleSheet("background-color: rgba(0, 0, 0, 0);")
         self.txt_signup_password.setObjectName("txt_signup_password")
+        self.txt_signup_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.label_3 = QtWidgets.QLabel(signup_page)
         self.label_3.setGeometry(QtCore.QRect(90, 140, 81, 16))
         font = QtGui.QFont()
@@ -77,6 +80,8 @@ class Ui_signup_page(object):
 "background-color: rgb(216, 211, 215);\n"
 "}")
         self.btn_create.setObjectName("btn_create")
+        self.btn_create.clicked.connect(self.signupFunction)
+        self.btn_create.clicked.connect(lambda: signup_page.close())
         self.label_5 = QtWidgets.QLabel(signup_page)
         self.label_5.setGeometry(QtCore.QRect(90, 320, 131, 16))
         font = QtGui.QFont()
@@ -91,9 +96,23 @@ class Ui_signup_page(object):
         self.txt_signup_password2.setFont(font)
         self.txt_signup_password2.setStyleSheet("background-color: rgba(0, 0, 0, 0);")
         self.txt_signup_password2.setObjectName("txt_signup_password2")
+        self.txt_signup_password2.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.lbl_error = QtWidgets.QLabel(signup_page)
+        self.lbl_error.setGeometry(QtCore.QRect(90, 400, 271, 21))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        self.lbl_error.setFont(font)
+        self.lbl_error.setStyleSheet("color: rgb(255, 0, 0);")
+        self.lbl_error.setObjectName("lbl_error")
 
         self.retranslateUi(signup_page)
         QtCore.QMetaObject.connectSlotsByName(signup_page)
+
+    def clickHandler3(self):
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_MainWindow()
+            self.ui.setupUi(self.window)
+            self.window.show()
 
     def retranslateUi(self, signup_page):
         _translate = QtCore.QCoreApplication.translate
@@ -104,7 +123,27 @@ class Ui_signup_page(object):
         self.label_4.setText(_translate("signup_page", "Password"))
         self.btn_create.setText(_translate("signup_page", "Create"))
         self.label_5.setText(_translate("signup_page", "Repeat Password"))
+    
+    def signupFunction(self):
+        user = self.txt_signup_username.text()
+        password = self.txt_signup_password.text()
+        confirmPassword = self.txt_signup_password2.text()
 
+        if len(user) == 0 or len(password) == 0:
+            self.lbl_error.setText("Please fill in all inputs.")
+        elif password!=confirmPassword:
+            self.lbl_error.setText("Passwords do not match.")
+        else:
+            conn = sqlite3.connect("Users.db")
+            cur = conn.cursor()
+
+            user_info = [user, password]
+            cur.execute('INSERT INTO login_info (username, password) VALUES(?,?)', user_info)
+            
+            conn.commit()
+            self.clickHandler3()
+            
+            conn.close()
 
 if __name__ == "__main__":
     import sys

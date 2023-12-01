@@ -9,6 +9,11 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sqlite3
+from function_loadData import *
+from ui_mainwindow import *
+
+
 
 
 class Ui_dialog_addnew(object):
@@ -73,6 +78,7 @@ class Ui_dialog_addnew(object):
 "}\n"
 "")
         self.btn_Create_task.setObjectName("btn_Create_task")
+        self.btn_Create_task.clicked.connect(lambda: self.loadData())
         self.dateEdit_task = QtWidgets.QDateEdit(dialog_addnew)
         self.dateEdit_task.dateChanged.connect(self.dateEditDateChanged)
         self.dateEdit_task.setGeometry(QtCore.QRect(110, 20, 121, 31))
@@ -86,7 +92,61 @@ class Ui_dialog_addnew(object):
 
     def dateEditDateChanged(self):
         print("The calendar date was changed")
-        dateSelected = self.dateEdit_event.date().toPyDate()
+        dateSelected = self.dateEdit_task.date().toPyDate()
+        #print(dateSelected)
+
+    def loadData(self):
+        dateSelected = self.dateEdit_task.date().toPyDate()
+        weekday =dateSelected.isoweekday()
+        if weekday == 1:
+            weekday = 'Monday'
+        elif weekday ==2:
+            weekday = 'Tuesday'
+        elif weekday ==3:
+            weekday = 'Wednesday'
+        elif weekday ==4:
+            weekday = 'Thursday'
+        elif weekday ==5:
+            weekday = 'Friday'
+        elif weekday ==6:
+            weekday = 'Saturday'
+        elif weekday ==7:
+            weekday = 'Sunday'
+        return weekday
+        taskName = self.txt_task_name.text()
+        taskDescription = self.txt_task_description.toPlainText()
+        estimatedTime = str(self.cb_estimated_time.currentText())
+
+        conn = sqlite3.connect("tasks.db")
+        cur = conn.cursor()
+        user_info = [weekday, taskName, taskDescription, estimatedTime, dateSelected,]
+        cur.execute('INSERT INTO task_info(Weekday, Task_Name, Task_Description, Estimated_Time, Date) VALUES(?, ?, ?, ?, ?)', user_info)
+
+        conn.commit()
+        print('Record inserted successfully')
+        conn.close()
+        self.chooseLoadDay()
+    def chooseLoadDay(self, weekday):
+        self.weekday = dialog_addnew.loadData(weekday)
+        if weekday == 'Monday':
+            self.loadMonday()
+        elif weekday == 'Tuesday':
+            self.loadTuesday()
+        elif weekday == 'Wednesday':
+            self.loadWednesday()
+        elif weekday == 'Thursday':
+            self.loadThursday()
+        elif weekday == 'Friday':
+            self.loadFriday()
+        elif weekday == 'Saturday':
+            self.loadSaturday()
+        elif weekday == 'Sunday':
+            self.loadSunday()
+
+
+
+
+   
 
     def retranslateUi(self, dialog_addnew):
         _translate = QtCore.QCoreApplication.translate

@@ -1,12 +1,12 @@
-from main import*
+from ui_mainwindow import *
 
-class UIFunctions(MainWindow):
+class UIFunctions(object):
 
     def toggleMenu(self,maxWidth, enable):
         if enable:
 
             #GET WIDTH
-            width = self.ui.frame_left_menu.width()
+            width = self.frame_left_menu.width()
             maxExtend = maxWidth
             standard = 70
 
@@ -17,7 +17,7 @@ class UIFunctions(MainWindow):
                 widthExtended = standard
 
             #Animation
-            self.animation = QPropertyAnimation(self.ui.frame_left_menu, b"minimumWidth")
+            self.animation = QPropertyAnimation(self.frame_left_menu, b"minimumWidth")
             self.animation.setDuration(400)
             self.animation.setStartValue(width)
             self.animation.setEndValue(widthExtended)
