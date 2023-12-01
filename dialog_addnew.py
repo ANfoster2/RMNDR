@@ -112,7 +112,7 @@ class Ui_dialog_addnew(object):
             weekday = 'Saturday'
         elif weekday ==7:
             weekday = 'Sunday'
-        return weekday
+       
         taskName = self.txt_task_name.text()
         taskDescription = self.txt_task_description.toPlainText()
         estimatedTime = str(self.cb_estimated_time.currentText())
@@ -126,22 +126,22 @@ class Ui_dialog_addnew(object):
         print('Record inserted successfully')
         conn.close()
         self.chooseLoadDay()
-    def chooseLoadDay(self, weekday):
-        self.weekday = dialog_addnew.loadData(weekday)
-        if weekday == 'Monday':
-            self.loadMonday()
-        elif weekday == 'Tuesday':
-            self.loadTuesday()
-        elif weekday == 'Wednesday':
-            self.loadWednesday()
-        elif weekday == 'Thursday':
-            self.loadThursday()
-        elif weekday == 'Friday':
-            self.loadFriday()
-        elif weekday == 'Saturday':
-            self.loadSaturday()
-        elif weekday == 'Sunday':
-            self.loadSunday()
+    # def chooseLoadDay(self, weekday):
+    #     self.weekday = dialog_addnew.loadData(weekday)
+    #     if weekday == 'Monday':
+    #         self.loadMonday()
+    #     elif weekday == 'Tuesday':
+    #         self.loadTuesday()
+    #     elif weekday == 'Wednesday':
+    #         self.loadWednesday()
+    #     elif weekday == 'Thursday':
+    #         self.loadThursday()
+    #     elif weekday == 'Friday':
+    #         self.loadFriday()
+    #     elif weekday == 'Saturday':
+    #         self.loadSaturday()
+    #     elif weekday == 'Sunday':
+    #         self.loadSunday()
 
 
 

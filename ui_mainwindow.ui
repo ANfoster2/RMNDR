@@ -590,7 +590,7 @@ background-color: rgb(255, 255, 255);
              <item>
               <widget class="QStackedWidget" name="pages_widget">
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="page_1">
                 <property name="sizePolicy">
