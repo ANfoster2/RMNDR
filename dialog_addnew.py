@@ -10,8 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sqlite3
-from function_loadData import *
-from ui_mainwindow import *
+import ui_mainwindow
 
 
 
@@ -51,7 +50,7 @@ class Ui_dialog_addnew(object):
         self.cb_estimated_time.addItem("")
         self.cb_estimated_time.addItem("")
         self.btn_cancel = QtWidgets.QPushButton(dialog_addnew)
-        self.btn_cancel.clicked.connect(lambda: dialog_addnew.close())
+        self.btn_cancel.clicked.connect(lambda: dialog_addnew.close()) #close window
         self.btn_cancel.setGeometry(QtCore.QRect(40, 380, 101, 41))
         self.btn_cancel.setStyleSheet("\n"
 "QPushButton{\n"
@@ -78,8 +77,10 @@ class Ui_dialog_addnew(object):
 "}\n"
 "")
         self.btn_Create_task.setObjectName("btn_Create_task")
-        self.btn_Create_task.clicked.connect(lambda: self.loadData())
+        self.btn_Create_task.clicked.connect(lambda: self.loadData()) #call load data function
+        #self.btn_Create_task.clicked.connect(lambda: dialog_addnew.close())
         self.dateEdit_task = QtWidgets.QDateEdit(dialog_addnew)
+        self.dateEdit_task.setDateTime(QtCore.QDateTime.currentDateTime())#set the dateEdit to current date
         self.dateEdit_task.dateChanged.connect(self.dateEditDateChanged)
         self.dateEdit_task.setGeometry(QtCore.QRect(110, 20, 121, 31))
         self.dateEdit_task.setStyleSheet("font: 10pt \"Microsoft YaHei\";")
@@ -91,13 +92,14 @@ class Ui_dialog_addnew(object):
         QtCore.QMetaObject.connectSlotsByName(dialog_addnew)
 
     def dateEditDateChanged(self):
-        print("The calendar date was changed")
-        dateSelected = self.dateEdit_task.date().toPyDate()
-        #print(dateSelected)
+        #The calendar date was changed
+        dateSelected = self.dateEdit_task.date().toPyDate() #format dateSelected to pyDate
+       
 
+    #load data into SQLite
     def loadData(self):
         dateSelected = self.dateEdit_task.date().toPyDate()
-        weekday =dateSelected.isoweekday()
+        weekday =dateSelected.isoweekday() #returns weekday as number (1-7)
         if weekday == 1:
             weekday = 'Monday'
         elif weekday ==2:
@@ -112,7 +114,7 @@ class Ui_dialog_addnew(object):
             weekday = 'Saturday'
         elif weekday ==7:
             weekday = 'Sunday'
-       
+        
         taskName = self.txt_task_name.text()
         taskDescription = self.txt_task_description.toPlainText()
         estimatedTime = str(self.cb_estimated_time.currentText())
@@ -125,28 +127,27 @@ class Ui_dialog_addnew(object):
         conn.commit()
         print('Record inserted successfully')
         conn.close()
-        self.chooseLoadDay()
-    # def chooseLoadDay(self, weekday):
-    #     self.weekday = dialog_addnew.loadData(weekday)
-    #     if weekday == 'Monday':
-    #         self.loadMonday()
-    #     elif weekday == 'Tuesday':
-    #         self.loadTuesday()
-    #     elif weekday == 'Wednesday':
-    #         self.loadWednesday()
-    #     elif weekday == 'Thursday':
-    #         self.loadThursday()
-    #     elif weekday == 'Friday':
-    #         self.loadFriday()
-    #     elif weekday == 'Saturday':
-    #         self.loadSaturday()
-    #     elif weekday == 'Sunday':
-    #         self.loadSunday()
+        # import ui_mainwindow
+        # if weekday == 'Monday':
+        #     self.ui.Ui_MainWindow.loadMonday()
+        # elif weekday == 'Tuesday':
+        #     self.ui.Ui_MainWindowloadTuesday()
+        # elif weekday == 'Wednesday':
+        #     self.ui.Ui_MainWindow.loadWednesday()
+        # elif weekday == 'Thursday':
+        #     self.ui.Ui_MainWindow.loadThursday()
+        # elif weekday == 'Friday':
+        #     self.ui.Ui_MainWindow.loadFriday()
+        # elif weekday == 'Saturday':
+        #     self.ui.Ui_MainWindow.loadSaturday()
+        # elif weekday == 'Sunday':
+        #     self.ui.Ui_MainWindow.loadSunday()
 
+        
+        
+        
+        
 
-
-
-   
 
     def retranslateUi(self, dialog_addnew):
         _translate = QtCore.QCoreApplication.translate

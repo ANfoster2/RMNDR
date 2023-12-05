@@ -1,7 +1,7 @@
 from ui_mainwindow import *
 
 class UIFunctions(object):
-
+#toggle main window sidebar
     def toggleMenu(self,maxWidth, enable):
         if enable:
 

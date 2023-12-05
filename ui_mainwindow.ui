@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1025</width>
-    <height>552</height>
+    <width>1000</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -590,7 +590,7 @@ background-color: rgb(255, 255, 255);
              <item>
               <widget class="QStackedWidget" name="pages_widget">
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="page_1">
                 <property name="sizePolicy">
@@ -761,7 +761,7 @@ background-color: rgb(255, 255, 255);
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>180</width>
+                        <width>250</width>
                         <height>16777215</height>
                        </size>
                       </property>
@@ -788,7 +788,36 @@ background-color: rgb(255, 255, 255);
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QTableWidget" name="tbl_notes_display"/>
+                        <widget class="QTableWidget" name="tbl_notes_display">
+                         <property name="frameShape">
+                          <enum>QFrame::NoFrame</enum>
+                         </property>
+                         <property name="textElideMode">
+                          <enum>Qt::ElideLeft</enum>
+                         </property>
+                         <property name="rowCount">
+                          <number>10</number>
+                         </property>
+                         <property name="columnCount">
+                          <number>1</number>
+                         </property>
+                         <row/>
+                         <row/>
+                         <row/>
+                         <row/>
+                         <row/>
+                         <row/>
+                         <row/>
+                         <row/>
+                         <row/>
+                         <row/>
+                         <column/>
+                         <item row="0" column="0">
+                          <property name="text">
+                           <string>Heyyyyyyyyyyyyyyyyyyyy</string>
+                          </property>
+                         </item>
+                        </widget>
                        </item>
                       </layout>
                      </widget>
@@ -810,7 +839,7 @@ background-color: rgb(255, 255, 255);
                       <widget class="QPushButton" name="btn_new_note">
                        <property name="geometry">
                         <rect>
-                         <x>650</x>
+                         <x>570</x>
                          <y>20</y>
                          <width>98</width>
                          <height>38</height>
@@ -842,6 +871,21 @@ background-color: rgb(255, 255, 255);
                          <width>771</width>
                          <height>511</height>
                         </rect>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Sunken</enum>
+                       </property>
+                       <property name="lineWidth">
+                        <number>0</number>
+                       </property>
+                       <property name="documentTitle">
+                        <string>Notes</string>
+                       </property>
+                       <property name="placeholderText">
+                        <string>Type note here..</string>
                        </property>
                       </widget>
                       <zorder>txt_notes</zorder>

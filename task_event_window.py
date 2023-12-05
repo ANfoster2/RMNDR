@@ -14,6 +14,7 @@ from dialog_new_event import Ui_dialog_new_event
 
 
 class Ui_SecondWindow(object):
+    #open event or task dialog
     def openWindow3(self):
         self.window = QtWidgets.QDialog()
         self.ui = Ui_dialog_addnew()

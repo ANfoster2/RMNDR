@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sqlite3
 
 
 class Ui_dialog_new_event(object):
@@ -53,6 +54,7 @@ class Ui_dialog_new_event(object):
 "")
         self.btn_cancel.setObjectName("btn_cancel")
         self.btn_Create_event = QtWidgets.QPushButton(dialog_new_event)
+        self.btn_Create_event.clicked.connect(lambda: self.loadData()) #call load data function
         self.btn_Create_event.setGeometry(QtCore.QRect(180, 410, 121, 41))
         self.btn_Create_event.setStyleSheet("QPushButton{\n"
 "    font: 10pt \"Microsoft YaHei UI\";\n"
@@ -66,6 +68,7 @@ class Ui_dialog_new_event(object):
 "")
         self.btn_Create_event.setObjectName("btn_Create_event")
         self.dateEdit_event = QtWidgets.QDateEdit(dialog_new_event)
+        self.dateEdit_event.setDateTime(QtCore.QDateTime.currentDateTime())#set the dateEdit to current date
         self.dateEdit_event.dateChanged.connect(self.dateEditDateChanged)
         self.dateEdit_event.setGeometry(QtCore.QRect(100, 30, 121, 31))
         self.dateEdit_event.setStyleSheet("font: 10pt \"Microsoft YaHei UI\";")
@@ -76,8 +79,42 @@ class Ui_dialog_new_event(object):
         QtCore.QMetaObject.connectSlotsByName(dialog_new_event)
 
     def dateEditDateChanged(self):
-        print("The calendar date was changed")
+        #The calendar date was changed
+        dateSelected = self.dateEdit_event.date().toPyDate() #format dateSelected to pyDate
+       
+
+    #load data into SQLite
+    def loadData(self):
         dateSelected = self.dateEdit_event.date().toPyDate()
+        weekday =dateSelected.isoweekday() #returns weekday as number (1-7)
+        if weekday == 1:
+            weekday = 'Monday'
+        elif weekday ==2:
+            weekday = 'Tuesday'
+        elif weekday ==3:
+            weekday = 'Wednesday'
+        elif weekday ==4:
+            weekday = 'Thursday'
+        elif weekday ==5:
+            weekday = 'Friday'
+        elif weekday ==6:
+            weekday = 'Saturday'
+        elif weekday ==7:
+            weekday = 'Sunday'
+        
+        eventName = self.txt_event_name.text()
+        eventDescription = self.txt_event_description.toPlainText()
+        location = self.txt_location.text()
+
+        conn = sqlite3.connect("tasks.db")
+        cur = conn.cursor()
+        user_info = [weekday, eventName, eventDescription, location, dateSelected,]
+        cur.execute('INSERT INTO event_info(Weekday, Event_Name, Event_Description, Event_Location, Event_Date) VALUES(?, ?, ?, ?, ?)', user_info)
+
+        conn.commit()
+        print('Record inserted successfully')
+        conn.close()
+    
 
     def retranslateUi(self, dialog_new_event):
         _translate = QtCore.QCoreApplication.translate

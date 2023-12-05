@@ -47,7 +47,7 @@ class Ui_login_page(object):
         self.txt_login_password.setFont(font)
         self.txt_login_password.setStyleSheet("background-color: rgba(0, 0, 0, 0);")
         self.txt_login_password.setObjectName("txt_login_password")
-        self.txt_login_password.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.txt_login_password.setEchoMode(QtWidgets.QLineEdit.Password) #protect password
         self.label_3 = QtWidgets.QLabel(login_page)
         self.label_3.setGeometry(QtCore.QRect(90, 160, 81, 16))
         font = QtGui.QFont()
@@ -77,14 +77,14 @@ class Ui_login_page(object):
         self.label_5.setObjectName("label_5")
         self.horizontalLayout.addWidget(self.label_5)
         self.btn_signup = QtWidgets.QPushButton(self.frame)
-        self.btn_signup.clicked.connect(self.clickHandler)
+        self.btn_signup.clicked.connect(self.clickHandler) #call click handler
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setUnderline(True)
         self.btn_signup.setFont(font)
         self.btn_signup.setStyleSheet("border: 0px")
         self.btn_signup.setObjectName("btn_signup")
-        self.btn_signup.clicked.connect(lambda: login_page.close())
+        self.btn_signup.clicked.connect(lambda: login_page.close()) #close login page
         self.horizontalLayout.addWidget(self.btn_signup)
         self.lbl_error = QtWidgets.QLabel(login_page)
         self.lbl_error.setGeometry(QtCore.QRect(90, 390, 271, 21))
@@ -113,7 +113,7 @@ class Ui_login_page(object):
 "}")
         self.btn_login.setObjectName("btn_login")
         self.btn_login.clicked.connect(self.loginFunction)
-        self.btn_login.clicked.connect(lambda: login_page.close())
+        self.btn_login.clicked.connect(lambda: login_page.close())#close login page
 
         self.retranslateUi(login_page)
         QtCore.QMetaObject.connectSlotsByName(login_page)
@@ -128,26 +128,27 @@ class Ui_login_page(object):
         self.label_5.setText(_translate("login_page", "New to RMNDR?"))
         self.btn_signup.setText(_translate("login_page", "Sign up"))
         self.btn_login.setText(_translate("login_page", "Login"))
-
+    #open signup page
     def clickHandler(self):
         self.window = QtWidgets.QDialog()
         self.ui = Ui_signup_page()
         self.ui.setupUi(self.window)
         self.window.show()
+    #open main window
     def clickHandler1(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
-
+    #get user info from SQL, match to user input
     def loginFunction(self):
         user = self.txt_login_username.text()
         password = self.txt_login_password.text()
-
+        #check if there is input
         if len(user)== 0 or len(password)== 0:
             self.lbl_error.setText("Please input all fields.")
 
-        else:
+        else: #connect database
             conn = sqlite3.connect("Users.db")
             cur = conn.cursor()
             query = 'SELECT password FROM login_info WHERE username =\''+user+"\'"

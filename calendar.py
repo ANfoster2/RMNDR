@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
+#Displays when today button is clicked
 class Ui_frm_calender(object):
     def setupUi(self, frm_calender):
         frm_calender.setObjectName("frm_calender")

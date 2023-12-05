@@ -46,7 +46,7 @@ class Ui_signup_page(object):
         self.txt_signup_password.setFont(font)
         self.txt_signup_password.setStyleSheet("background-color: rgba(0, 0, 0, 0);")
         self.txt_signup_password.setObjectName("txt_signup_password")
-        self.txt_signup_password.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.txt_signup_password.setEchoMode(QtWidgets.QLineEdit.Password) #protect password
         self.label_3 = QtWidgets.QLabel(signup_page)
         self.label_3.setGeometry(QtCore.QRect(90, 140, 81, 16))
         font = QtGui.QFont()
@@ -81,7 +81,7 @@ class Ui_signup_page(object):
 "}")
         self.btn_create.setObjectName("btn_create")
         self.btn_create.clicked.connect(self.signupFunction)
-        self.btn_create.clicked.connect(lambda: signup_page.close())
+        self.btn_create.clicked.connect(lambda: signup_page.close())#close window
         self.label_5 = QtWidgets.QLabel(signup_page)
         self.label_5.setGeometry(QtCore.QRect(90, 320, 131, 16))
         font = QtGui.QFont()
@@ -96,7 +96,7 @@ class Ui_signup_page(object):
         self.txt_signup_password2.setFont(font)
         self.txt_signup_password2.setStyleSheet("background-color: rgba(0, 0, 0, 0);")
         self.txt_signup_password2.setObjectName("txt_signup_password2")
-        self.txt_signup_password2.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.txt_signup_password2.setEchoMode(QtWidgets.QLineEdit.Password) #protect password
         self.lbl_error = QtWidgets.QLabel(signup_page)
         self.lbl_error.setGeometry(QtCore.QRect(90, 400, 271, 21))
         font = QtGui.QFont()
@@ -107,7 +107,7 @@ class Ui_signup_page(object):
 
         self.retranslateUi(signup_page)
         QtCore.QMetaObject.connectSlotsByName(signup_page)
-
+    #open main window
     def clickHandler3(self):
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_MainWindow()
